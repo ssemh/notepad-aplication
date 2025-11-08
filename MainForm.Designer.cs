@@ -25,6 +25,7 @@ namespace NotepadApp
         private ToolStripMenuItem gitToolStripMenuItem;
         private ToolStripSeparator separator4;
         private ToolStripMenuItem tarihSaatToolStripMenuItem;
+        private ToolStripMenuItem resimEkleToolStripMenuItem;
         private ToolStripSeparator separator5;
         private ToolStripMenuItem büyükHarfToolStripMenuItem;
         private ToolStripMenuItem küçükHarfToolStripMenuItem;
@@ -38,7 +39,7 @@ namespace NotepadApp
         private ToolStripMenuItem koyuTemaToolStripMenuItem;
         private ToolStripMenuItem maviTemaToolStripMenuItem;
         private ToolStripMenuItem yeşilTemaToolStripMenuItem;
-        private TextBox textBoxContent;
+        private RichTextBox textBoxContent;
         private StatusStrip statusStrip;
         private ToolStripStatusLabel statusLabel;
 
@@ -75,6 +76,7 @@ namespace NotepadApp
             this.gitToolStripMenuItem = new ToolStripMenuItem();
             this.separator4 = new ToolStripSeparator();
             this.tarihSaatToolStripMenuItem = new ToolStripMenuItem();
+            this.resimEkleToolStripMenuItem = new ToolStripMenuItem();
             this.separator5 = new ToolStripSeparator();
             this.büyükHarfToolStripMenuItem = new ToolStripMenuItem();
             this.küçükHarfToolStripMenuItem = new ToolStripMenuItem();
@@ -88,7 +90,7 @@ namespace NotepadApp
             this.koyuTemaToolStripMenuItem = new ToolStripMenuItem();
             this.maviTemaToolStripMenuItem = new ToolStripMenuItem();
             this.yeşilTemaToolStripMenuItem = new ToolStripMenuItem();
-            this.textBoxContent = new TextBox();
+            this.textBoxContent = new RichTextBox();
             this.statusStrip = new StatusStrip();
             this.statusLabel = new ToolStripStatusLabel();
             this.menuStrip.SuspendLayout();
@@ -174,6 +176,7 @@ namespace NotepadApp
                 this.gitToolStripMenuItem,
                 this.separator4,
                 this.tarihSaatToolStripMenuItem,
+                this.resimEkleToolStripMenuItem,
                 this.separator5,
                 this.büyükHarfToolStripMenuItem,
                 this.küçükHarfToolStripMenuItem,
@@ -261,6 +264,12 @@ namespace NotepadApp
             this.tarihSaatToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.tarihSaatToolStripMenuItem.Text = "Tarih/Saat";
             this.tarihSaatToolStripMenuItem.Click += new System.EventHandler(this.tarihSaatToolStripMenuItem_Click);
+
+            // resimEkleToolStripMenuItem
+            this.resimEkleToolStripMenuItem.Name = "resimEkleToolStripMenuItem";
+            this.resimEkleToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.resimEkleToolStripMenuItem.Text = "Resim Ekle...";
+            this.resimEkleToolStripMenuItem.Click += new System.EventHandler(this.resimEkleToolStripMenuItem_Click);
 
             // separator5
             this.separator5.Name = "separator5";
@@ -354,11 +363,10 @@ namespace NotepadApp
             this.textBoxContent.Dock = DockStyle.Fill;
             this.textBoxContent.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxContent.Location = new System.Drawing.Point(0, 24);
-            this.textBoxContent.Multiline = true;
             this.textBoxContent.Name = "textBoxContent";
-            this.textBoxContent.ScrollBars = ScrollBars.Both;
             this.textBoxContent.Size = new System.Drawing.Size(800, 426);
             this.textBoxContent.TabIndex = 1;
+            this.textBoxContent.Text = "";
             this.textBoxContent.TextChanged += new System.EventHandler(this.textBoxContent_TextChanged);
             this.textBoxContent.MouseUp += new System.Windows.Forms.MouseEventHandler(this.textBoxContent_MouseUp);
             this.textBoxContent.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxContent_KeyUp);
@@ -413,6 +421,7 @@ namespace NotepadApp
         private void bulToolStripMenuItem_Click(object sender, EventArgs e) => ShowFindReplace();
         private void gitToolStripMenuItem_Click(object sender, EventArgs e) => ShowGoToLine();
         private void tarihSaatToolStripMenuItem_Click(object sender, EventArgs e) => InsertDateTime();
+        private void resimEkleToolStripMenuItem_Click(object sender, EventArgs e) => InsertImage();
         private void büyükHarfToolStripMenuItem_Click(object sender, EventArgs e) => ConvertToUpperCase();
         private void küçükHarfToolStripMenuItem_Click(object sender, EventArgs e) => ConvertToLowerCase();
         private void başlıkHarfToolStripMenuItem_Click(object sender, EventArgs e) => ConvertToTitleCase();

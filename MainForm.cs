@@ -79,7 +79,7 @@ namespace NotepadApp
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.Filter = "Metin Dosyaları (*.txt)|*.txt|Tüm Dosyalar (*.*)|*.*";
+                openFileDialog.Filter = "Metin Dosyaları (*.txt)|*.txt|RTF Dosyaları (*.rtf)|*.rtf|Tüm Dosyalar (*.*)|*.*";
                 openFileDialog.FilterIndex = 1;
                 openFileDialog.RestoreDirectory = true;
 
@@ -88,7 +88,15 @@ namespace NotepadApp
                     try
                     {
                         currentFilePath = openFileDialog.FileName;
-                        textBoxContent.Text = File.ReadAllText(currentFilePath);
+                        // RichTextBox için dosya yükleme
+                        if (Path.GetExtension(currentFilePath).ToLower() == ".rtf")
+                        {
+                            textBoxContent.LoadFile(currentFilePath, RichTextBoxStreamType.RichText);
+                        }
+                        else
+                        {
+                            textBoxContent.Text = File.ReadAllText(currentFilePath);
+                        }
                         isModified = false;
                         this.Text = $"Not Defteri - {Path.GetFileName(currentFilePath)}";
                         UpdateStatusBar();
@@ -115,7 +123,15 @@ namespace NotepadApp
             {
                 try
                 {
-                    File.WriteAllText(currentFilePath, textBoxContent.Text);
+                    // RichTextBox için dosya kaydetme
+                    if (Path.GetExtension(currentFilePath).ToLower() == ".rtf")
+                    {
+                        textBoxContent.SaveFile(currentFilePath, RichTextBoxStreamType.RichText);
+                    }
+                    else
+                    {
+                        File.WriteAllText(currentFilePath, textBoxContent.Text);
+                    }
                     isModified = false;
                     this.Text = $"Not Defteri - {Path.GetFileName(currentFilePath)}";
                     UpdateStatusBar();
@@ -135,7 +151,7 @@ namespace NotepadApp
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
-                saveFileDialog.Filter = "Metin Dosyaları (*.txt)|*.txt|Tüm Dosyalar (*.*)|*.*";
+                saveFileDialog.Filter = "Metin Dosyaları (*.txt)|*.txt|RTF Dosyaları (*.rtf)|*.rtf|Tüm Dosyalar (*.*)|*.*";
                 saveFileDialog.FilterIndex = 1;
                 saveFileDialog.RestoreDirectory = true;
 
@@ -144,7 +160,15 @@ namespace NotepadApp
                     try
                     {
                         currentFilePath = saveFileDialog.FileName;
-                        File.WriteAllText(currentFilePath, textBoxContent.Text);
+                        // RichTextBox için dosya kaydetme
+                        if (Path.GetExtension(currentFilePath).ToLower() == ".rtf")
+                        {
+                            textBoxContent.SaveFile(currentFilePath, RichTextBoxStreamType.RichText);
+                        }
+                        else
+                        {
+                            File.WriteAllText(currentFilePath, textBoxContent.Text);
+                        }
                         isModified = false;
                         this.Text = $"Not Defteri - {Path.GetFileName(currentFilePath)}";
                         UpdateStatusBar();
@@ -202,12 +226,56 @@ namespace NotepadApp
         {
             using (ColorDialog colorDialog = new ColorDialog())
             {
-                colorDialog.Color = textBoxContent.ForeColor;
+                colorDialog.Color = textBoxContent.SelectionColor;
                 colorDialog.FullOpen = true;
 
                 if (colorDialog.ShowDialog() == DialogResult.OK)
                 {
-                    textBoxContent.ForeColor = colorDialog.Color;
+                    if (textBoxContent.SelectionLength > 0)
+                    {
+                        textBoxContent.SelectionColor = colorDialog.Color;
+                    }
+                    else
+                    {
+                        textBoxContent.SelectionColor = colorDialog.Color;
+                        textBoxContent.ForeColor = colorDialog.Color;
+                    }
+                }
+            }
+        }
+
+        private void InsertImage()
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Resim Dosyaları (*.jpg;*.jpeg;*.png;*.gif;*.bmp)|*.jpg;*.jpeg;*.png;*.gif;*.bmp|Tüm Dosyalar (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        string imagePath = openFileDialog.FileName;
+                        Image image = Image.FromFile(imagePath);
+                        
+                        // Resmi clipboard'a kopyala ve yapıştır
+                        Clipboard.SetImage(image);
+                        textBoxContent.Paste();
+                        
+                        image.Dispose();
+                        isModified = true;
+                        string fileName = string.IsNullOrEmpty(currentFilePath) ? "Yeni Dosya" : Path.GetFileName(currentFilePath);
+                        this.Text = $"Not Defteri - {fileName} *";
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            $"Resim eklenirken hata oluştu:\n{ex.Message}",
+                            "Hata",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -355,7 +423,7 @@ namespace NotepadApp
         {
             int line = textBoxContent.GetLineFromCharIndex(textBoxContent.SelectionStart) + 1;
             int column = textBoxContent.SelectionStart - textBoxContent.GetFirstCharIndexFromLine(line - 1) + 1;
-            int charCount = textBoxContent.Text.Length;
+            int charCount = textBoxContent.TextLength;
             int wordCount = CountWords(textBoxContent.Text);
             statusLabel.Text = $"Satır: {line}, Sütun: {column} | Karakter: {charCount} | Kelime: {wordCount}";
         }
@@ -397,16 +465,16 @@ namespace NotepadApp
 
         private void Redo()
         {
-            // TextBox'ta Redo yok, bu yüzden basit bir implementasyon
-            SendKeys.Send("^y");
+            if (textBoxContent.CanRedo)
+            {
+                textBoxContent.Redo();
+            }
         }
 
         private void InsertDateTime()
         {
             string dateTime = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
-            int selectionStart = textBoxContent.SelectionStart;
-            textBoxContent.Text = textBoxContent.Text.Insert(selectionStart, dateTime);
-            textBoxContent.SelectionStart = selectionStart + dateTime.Length;
+            textBoxContent.SelectedText = dateTime;
             textBoxContent.Focus();
         }
 
@@ -419,7 +487,8 @@ namespace NotepadApp
             }
             else
             {
-                textBoxContent.Text = textBoxContent.Text.ToUpper();
+                textBoxContent.SelectAll();
+                textBoxContent.SelectedText = textBoxContent.Text.ToUpper();
             }
         }
 
@@ -432,7 +501,8 @@ namespace NotepadApp
             }
             else
             {
-                textBoxContent.Text = textBoxContent.Text.ToLower();
+                textBoxContent.SelectAll();
+                textBoxContent.SelectedText = textBoxContent.Text.ToLower();
             }
         }
 
@@ -445,7 +515,8 @@ namespace NotepadApp
             }
             else
             {
-                textBoxContent.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(textBoxContent.Text.ToLower());
+                textBoxContent.SelectAll();
+                textBoxContent.SelectedText = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(textBoxContent.Text.ToLower());
             }
         }
 
@@ -474,12 +545,12 @@ namespace NotepadApp
     // FindReplaceForm - Bul ve Değiştir formu
     public partial class FindReplaceForm : Form
     {
-        private TextBox targetTextBox;
+        private RichTextBox targetTextBox;
         private int lastSearchIndex = 0;
         private bool matchCase = false;
         private bool matchWholeWord = false;
 
-        public FindReplaceForm(TextBox textBox)
+        public FindReplaceForm(RichTextBox textBox)
         {
             InitializeComponent();
             targetTextBox = textBox;
@@ -677,9 +748,9 @@ namespace NotepadApp
     // GoToLineForm - Satıra Git formu
     public partial class GoToLineForm : Form
     {
-        private TextBox targetTextBox;
+        private RichTextBox targetTextBox;
 
-        public GoToLineForm(TextBox textBox)
+        public GoToLineForm(RichTextBox textBox)
         {
             InitializeComponent();
             targetTextBox = textBox;
