@@ -27,7 +27,7 @@ namespace NotepadApp
             menuStrip.RenderMode = ToolStripRenderMode.Professional;
             UpdateStatusBar();
             ApplyTheme(Theme.Light);
-            UpdateThemeMenu(); // Başlangıçta doğru tema işaretini göster
+            UpdateThemeMenu();
         }
 
         private void NewFile()
@@ -88,7 +88,6 @@ namespace NotepadApp
                     try
                     {
                         currentFilePath = openFileDialog.FileName;
-                        // RichTextBox için dosya yükleme
                         if (Path.GetExtension(currentFilePath).ToLower() == ".rtf")
                         {
                             textBoxContent.LoadFile(currentFilePath, RichTextBoxStreamType.RichText);
@@ -123,7 +122,6 @@ namespace NotepadApp
             {
                 try
                 {
-                    // RichTextBox için dosya kaydetme
                     if (Path.GetExtension(currentFilePath).ToLower() == ".rtf")
                     {
                         textBoxContent.SaveFile(currentFilePath, RichTextBoxStreamType.RichText);
@@ -160,7 +158,6 @@ namespace NotepadApp
                     try
                     {
                         currentFilePath = saveFileDialog.FileName;
-                        // RichTextBox için dosya kaydetme
                         if (Path.GetExtension(currentFilePath).ToLower() == ".rtf")
                         {
                             textBoxContent.SaveFile(currentFilePath, RichTextBoxStreamType.RichText);
@@ -259,7 +256,6 @@ namespace NotepadApp
                         string imagePath = openFileDialog.FileName;
                         Image image = Image.FromFile(imagePath);
                         
-                        // Resmi clipboard'a kopyala ve yapıştır
                         Clipboard.SetImage(image);
                         textBoxContent.Paste();
                         
@@ -287,7 +283,6 @@ namespace NotepadApp
             switch (theme)
             {
                 case Theme.Light:
-                    // Açık tema renkleri (varsayılan)
                     this.BackColor = SystemColors.Control;
                     this.ForeColor = SystemColors.ControlText;
                     
@@ -306,7 +301,6 @@ namespace NotepadApp
                     break;
                     
                 case Theme.Dark:
-                    // Koyu tema renkleri
                     this.BackColor = Color.FromArgb(30, 30, 30);
                     this.ForeColor = Color.White;
                     
@@ -325,7 +319,6 @@ namespace NotepadApp
                     break;
                     
                 case Theme.Blue:
-                    // Mavi tema renkleri
                     this.BackColor = Color.FromArgb(30, 50, 70);
                     this.ForeColor = Color.White;
                     
@@ -344,7 +337,6 @@ namespace NotepadApp
                     break;
                     
                 case Theme.Green:
-                    // Yeşil tema renkleri
                     this.BackColor = Color.FromArgb(30, 60, 40);
                     this.ForeColor = Color.White;
                     
@@ -387,7 +379,6 @@ namespace NotepadApp
 
         private void ToggleTheme()
         {
-            // Eski metod - artık kullanılmıyor ama geriye dönük uyumluluk için bırakıyoruz
             if (currentTheme == Theme.Dark)
                 ApplyTheme(Theme.Light);
             else
@@ -414,7 +405,6 @@ namespace NotepadApp
                 }
                 else if (item is ToolStripSeparator separator)
                 {
-                    // Separator için özel işlem gerekebilir
                 }
             }
         }
@@ -542,7 +532,6 @@ namespace NotepadApp
         }
     }
 
-    // FindReplaceForm - Bul ve Değiştir formu
     public partial class FindReplaceForm : Form
     {
         private RichTextBox targetTextBox;
@@ -610,7 +599,6 @@ namespace NotepadApp
             chkMatchCase.ForeColor = formForeColor;
             chkMatchWholeWord.ForeColor = formForeColor;
             
-            // Butonları da tema renklerine göre ayarla
             btnFindNext.BackColor = formBackColor;
             btnFindNext.ForeColor = formForeColor;
             btnReplace.BackColor = formBackColor;
@@ -658,7 +646,6 @@ namespace NotepadApp
             
             if (index == -1 && startIndex > 0)
             {
-                // Baştan tekrar ara
                 index = text.IndexOf(searchText, 0, comparison);
             }
 
@@ -745,7 +732,6 @@ namespace NotepadApp
         }
     }
 
-    // GoToLineForm - Satıra Git formu
     public partial class GoToLineForm : Form
     {
         private RichTextBox targetTextBox;
@@ -756,7 +742,6 @@ namespace NotepadApp
             targetTextBox = textBox;
             this.StartPosition = FormStartPosition.CenterParent;
             
-            // Toplam satır sayısını göster
             int totalLines = textBox.Lines.Length;
             lblLineNumber.Text = $"Satır numarası (1-{totalLines}):";
         }
@@ -809,7 +794,6 @@ namespace NotepadApp
             txtLineNumber.BackColor = textBoxBackColor;
             txtLineNumber.ForeColor = textBoxForeColor;
             
-            // Butonları da tema renklerine göre ayarla
             btnGoTo.BackColor = formBackColor;
             btnGoTo.ForeColor = formForeColor;
             btnCancel.BackColor = formBackColor;
@@ -832,7 +816,6 @@ namespace NotepadApp
                     return;
                 }
 
-                // Satıra git
                 int charIndex = targetTextBox.GetFirstCharIndexFromLine(lineNumber - 1);
                 if (charIndex >= 0)
                 {

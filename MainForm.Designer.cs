@@ -97,7 +97,6 @@ namespace NotepadApp
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
 
-            // menuStrip
             this.menuStrip.Items.AddRange(new ToolStripItem[] {
                 this.dosyaToolStripMenuItem,
                 this.düzenToolStripMenuItem,
@@ -110,7 +109,6 @@ namespace NotepadApp
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip";
 
-            // dosyaToolStripMenuItem
             this.dosyaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
                 this.yeniToolStripMenuItem,
                 this.açToolStripMenuItem,
@@ -123,45 +121,38 @@ namespace NotepadApp
             this.dosyaToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.dosyaToolStripMenuItem.Text = "Dosya";
 
-            // yeniToolStripMenuItem
             this.yeniToolStripMenuItem.Name = "yeniToolStripMenuItem";
             this.yeniToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.yeniToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.yeniToolStripMenuItem.Text = "Yeni";
             this.yeniToolStripMenuItem.Click += new System.EventHandler(this.yeniToolStripMenuItem_Click);
 
-            // açToolStripMenuItem
             this.açToolStripMenuItem.Name = "açToolStripMenuItem";
             this.açToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.açToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.açToolStripMenuItem.Text = "Aç...";
             this.açToolStripMenuItem.Click += new System.EventHandler(this.açToolStripMenuItem_Click);
 
-            // kaydetToolStripMenuItem
             this.kaydetToolStripMenuItem.Name = "kaydetToolStripMenuItem";
             this.kaydetToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.kaydetToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.kaydetToolStripMenuItem.Text = "Kaydet";
             this.kaydetToolStripMenuItem.Click += new System.EventHandler(this.kaydetToolStripMenuItem_Click);
 
-            // farklıKaydetToolStripMenuItem
             this.farklıKaydetToolStripMenuItem.Name = "farklıKaydetToolStripMenuItem";
             this.farklıKaydetToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) | System.Windows.Forms.Keys.S)));
             this.farklıKaydetToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.farklıKaydetToolStripMenuItem.Text = "Farklı Kaydet...";
             this.farklıKaydetToolStripMenuItem.Click += new System.EventHandler(this.farklıKaydetToolStripMenuItem_Click);
 
-            // separator1
             this.separator1.Name = "separator1";
             this.separator1.Size = new System.Drawing.Size(197, 6);
 
-            // çıkışToolStripMenuItem
             this.çıkışToolStripMenuItem.Name = "çıkışToolStripMenuItem";
             this.çıkışToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.çıkışToolStripMenuItem.Text = "Çıkış";
             this.çıkışToolStripMenuItem.Click += new System.EventHandler(this.çıkışToolStripMenuItem_Click);
 
-            // düzenToolStripMenuItem
             this.düzenToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
                 this.geriAlToolStripMenuItem,
                 this.yineleToolStripMenuItem,
@@ -186,114 +177,95 @@ namespace NotepadApp
             this.düzenToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.düzenToolStripMenuItem.Text = "Düzen";
 
-            // geriAlToolStripMenuItem
             this.geriAlToolStripMenuItem.Name = "geriAlToolStripMenuItem";
             this.geriAlToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
             this.geriAlToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.geriAlToolStripMenuItem.Text = "Geri Al";
             this.geriAlToolStripMenuItem.Click += new System.EventHandler(this.geriAlToolStripMenuItem_Click);
 
-            // yineleToolStripMenuItem
             this.yineleToolStripMenuItem.Name = "yineleToolStripMenuItem";
             this.yineleToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
             this.yineleToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.yineleToolStripMenuItem.Text = "Yinele";
             this.yineleToolStripMenuItem.Click += new System.EventHandler(this.yineleToolStripMenuItem_Click);
 
-            // separatorUndo
             this.separatorUndo.Name = "separatorUndo";
             this.separatorUndo.Size = new System.Drawing.Size(197, 6);
 
-            // kesToolStripMenuItem
             this.kesToolStripMenuItem.Name = "kesToolStripMenuItem";
             this.kesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
             this.kesToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.kesToolStripMenuItem.Text = "Kes";
             this.kesToolStripMenuItem.Click += new System.EventHandler(this.kesToolStripMenuItem_Click);
 
-            // kopyalaToolStripMenuItem
             this.kopyalaToolStripMenuItem.Name = "kopyalaToolStripMenuItem";
             this.kopyalaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.kopyalaToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.kopyalaToolStripMenuItem.Text = "Kopyala";
             this.kopyalaToolStripMenuItem.Click += new System.EventHandler(this.kopyalaToolStripMenuItem_Click);
 
-            // yapıştırToolStripMenuItem
             this.yapıştırToolStripMenuItem.Name = "yapıştırToolStripMenuItem";
             this.yapıştırToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
             this.yapıştırToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.yapıştırToolStripMenuItem.Text = "Yapıştır";
             this.yapıştırToolStripMenuItem.Click += new System.EventHandler(this.yapıştırToolStripMenuItem_Click);
 
-            // separator2
             this.separator2.Name = "separator2";
             this.separator2.Size = new System.Drawing.Size(197, 6);
 
-            // tümünüSeçToolStripMenuItem
             this.tümünüSeçToolStripMenuItem.Name = "tümünüSeçToolStripMenuItem";
             this.tümünüSeçToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.tümünüSeçToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.tümünüSeçToolStripMenuItem.Text = "Tümünü Seç";
             this.tümünüSeçToolStripMenuItem.Click += new System.EventHandler(this.tümünüSeçToolStripMenuItem_Click);
 
-            // separator3
             this.separator3.Name = "separator3";
             this.separator3.Size = new System.Drawing.Size(197, 6);
 
-            // bulToolStripMenuItem
             this.bulToolStripMenuItem.Name = "bulToolStripMenuItem";
             this.bulToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
             this.bulToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.bulToolStripMenuItem.Text = "Bul...";
             this.bulToolStripMenuItem.Click += new System.EventHandler(this.bulToolStripMenuItem_Click);
 
-            // gitToolStripMenuItem
             this.gitToolStripMenuItem.Name = "gitToolStripMenuItem";
             this.gitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
             this.gitToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.gitToolStripMenuItem.Text = "Satıra Git...";
             this.gitToolStripMenuItem.Click += new System.EventHandler(this.gitToolStripMenuItem_Click);
 
-            // separator4
             this.separator4.Name = "separator4";
             this.separator4.Size = new System.Drawing.Size(197, 6);
 
-            // tarihSaatToolStripMenuItem
             this.tarihSaatToolStripMenuItem.Name = "tarihSaatToolStripMenuItem";
             this.tarihSaatToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.F5)));
             this.tarihSaatToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.tarihSaatToolStripMenuItem.Text = "Tarih/Saat";
             this.tarihSaatToolStripMenuItem.Click += new System.EventHandler(this.tarihSaatToolStripMenuItem_Click);
 
-            // resimEkleToolStripMenuItem
             this.resimEkleToolStripMenuItem.Name = "resimEkleToolStripMenuItem";
             this.resimEkleToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.resimEkleToolStripMenuItem.Text = "Resim Ekle...";
             this.resimEkleToolStripMenuItem.Click += new System.EventHandler(this.resimEkleToolStripMenuItem_Click);
 
-            // separator5
             this.separator5.Name = "separator5";
             this.separator5.Size = new System.Drawing.Size(197, 6);
 
-            // büyükHarfToolStripMenuItem
             this.büyükHarfToolStripMenuItem.Name = "büyükHarfToolStripMenuItem";
             this.büyükHarfToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.büyükHarfToolStripMenuItem.Text = "Büyük Harfe Çevir";
             this.büyükHarfToolStripMenuItem.Click += new System.EventHandler(this.büyükHarfToolStripMenuItem_Click);
 
-            // küçükHarfToolStripMenuItem
             this.küçükHarfToolStripMenuItem.Name = "küçükHarfToolStripMenuItem";
             this.küçükHarfToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.küçükHarfToolStripMenuItem.Text = "Küçük Harfe Çevir";
             this.küçükHarfToolStripMenuItem.Click += new System.EventHandler(this.küçükHarfToolStripMenuItem_Click);
 
-            // başlıkHarfToolStripMenuItem
             this.başlıkHarfToolStripMenuItem.Name = "başlıkHarfToolStripMenuItem";
             this.başlıkHarfToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.başlıkHarfToolStripMenuItem.Text = "Başlık Harfine Çevir";
             this.başlıkHarfToolStripMenuItem.Click += new System.EventHandler(this.başlıkHarfToolStripMenuItem_Click);
 
-            // biçimToolStripMenuItem
             this.biçimToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
                 this.yazıTipiToolStripMenuItem,
                 this.yazıRengiToolStripMenuItem,
@@ -303,23 +275,19 @@ namespace NotepadApp
             this.biçimToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.biçimToolStripMenuItem.Text = "Biçim";
 
-            // yazıTipiToolStripMenuItem
             this.yazıTipiToolStripMenuItem.Name = "yazıTipiToolStripMenuItem";
             this.yazıTipiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.yazıTipiToolStripMenuItem.Text = "Yazı Tipi...";
             this.yazıTipiToolStripMenuItem.Click += new System.EventHandler(this.yazıTipiToolStripMenuItem_Click);
 
-            // yazıRengiToolStripMenuItem
             this.yazıRengiToolStripMenuItem.Name = "yazıRengiToolStripMenuItem";
             this.yazıRengiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.yazıRengiToolStripMenuItem.Text = "Yazı Rengi...";
             this.yazıRengiToolStripMenuItem.Click += new System.EventHandler(this.yazıRengiToolStripMenuItem_Click);
 
-            // separator7
             this.separator7.Name = "separator7";
             this.separator7.Size = new System.Drawing.Size(149, 6);
 
-            // temaToolStripMenuItem
             this.temaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
                 this.açıkTemaToolStripMenuItem,
                 this.koyuTemaToolStripMenuItem,
@@ -330,28 +298,24 @@ namespace NotepadApp
             this.temaToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.temaToolStripMenuItem.Text = "Tema";
 
-            // açıkTemaToolStripMenuItem
             this.açıkTemaToolStripMenuItem.CheckOnClick = true;
             this.açıkTemaToolStripMenuItem.Name = "açıkTemaToolStripMenuItem";
             this.açıkTemaToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.açıkTemaToolStripMenuItem.Text = "Açık Tema";
             this.açıkTemaToolStripMenuItem.Click += new System.EventHandler(this.açıkTemaToolStripMenuItem_Click);
 
-            // koyuTemaToolStripMenuItem
             this.koyuTemaToolStripMenuItem.CheckOnClick = true;
             this.koyuTemaToolStripMenuItem.Name = "koyuTemaToolStripMenuItem";
             this.koyuTemaToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.koyuTemaToolStripMenuItem.Text = "Koyu Tema";
             this.koyuTemaToolStripMenuItem.Click += new System.EventHandler(this.koyuTemaToolStripMenuItem_Click);
 
-            // maviTemaToolStripMenuItem
             this.maviTemaToolStripMenuItem.CheckOnClick = true;
             this.maviTemaToolStripMenuItem.Name = "maviTemaToolStripMenuItem";
             this.maviTemaToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.maviTemaToolStripMenuItem.Text = "Mavi Tema";
             this.maviTemaToolStripMenuItem.Click += new System.EventHandler(this.maviTemaToolStripMenuItem_Click);
 
-            // yeşilTemaToolStripMenuItem
             this.yeşilTemaToolStripMenuItem.CheckOnClick = true;
             this.yeşilTemaToolStripMenuItem.Name = "yeşilTemaToolStripMenuItem";
             this.yeşilTemaToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
@@ -359,7 +323,6 @@ namespace NotepadApp
             this.yeşilTemaToolStripMenuItem.Click += new System.EventHandler(this.yeşilTemaToolStripMenuItem_Click);
 
 
-            // textBoxContent
             this.textBoxContent.Dock = DockStyle.Fill;
             this.textBoxContent.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxContent.Location = new System.Drawing.Point(0, 24);
@@ -371,7 +334,6 @@ namespace NotepadApp
             this.textBoxContent.MouseUp += new System.Windows.Forms.MouseEventHandler(this.textBoxContent_MouseUp);
             this.textBoxContent.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxContent_KeyUp);
 
-            // statusStrip
             this.statusStrip.Items.AddRange(new ToolStripItem[] {
                 this.statusLabel
             });
@@ -381,13 +343,11 @@ namespace NotepadApp
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "statusStrip";
 
-            // statusLabel
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(785, 17);
             this.statusLabel.Spring = true;
             this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 
-            // MainForm
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 472);
@@ -406,7 +366,6 @@ namespace NotepadApp
             this.PerformLayout();
         }
 
-        // Event handlers
         private void yeniToolStripMenuItem_Click(object sender, EventArgs e) => NewFile();
         private void açToolStripMenuItem_Click(object sender, EventArgs e) => OpenFile();
         private void kaydetToolStripMenuItem_Click(object sender, EventArgs e) => SaveFile();
@@ -433,7 +392,6 @@ namespace NotepadApp
         private void yeşilTemaToolStripMenuItem_Click(object sender, EventArgs e) => SetThemeGreen();
     }
 
-    // FindReplaceForm Designer
     partial class FindReplaceForm
     {
         private System.ComponentModel.IContainer components = null;
@@ -471,34 +429,29 @@ namespace NotepadApp
             this.btnCancel = new Button();
             this.SuspendLayout();
 
-            // lblFind
             this.lblFind.AutoSize = true;
             this.lblFind.Location = new System.Drawing.Point(12, 15);
             this.lblFind.Name = "lblFind";
             this.lblFind.Size = new System.Drawing.Size(28, 15);
             this.lblFind.Text = "Bul:";
 
-            // txtFind
             this.txtFind.Location = new System.Drawing.Point(80, 12);
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(250, 23);
             this.txtFind.TabIndex = 1;
             this.txtFind.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFind_KeyDown);
 
-            // lblReplace
             this.lblReplace.AutoSize = true;
             this.lblReplace.Location = new System.Drawing.Point(12, 45);
             this.lblReplace.Name = "lblReplace";
             this.lblReplace.Size = new System.Drawing.Size(62, 15);
             this.lblReplace.Text = "Değiştir:";
 
-            // txtReplace
             this.txtReplace.Location = new System.Drawing.Point(80, 42);
             this.txtReplace.Name = "txtReplace";
             this.txtReplace.Size = new System.Drawing.Size(250, 23);
             this.txtReplace.TabIndex = 2;
 
-            // chkMatchCase
             this.chkMatchCase.AutoSize = true;
             this.chkMatchCase.Location = new System.Drawing.Point(80, 75);
             this.chkMatchCase.Name = "chkMatchCase";
@@ -507,7 +460,6 @@ namespace NotepadApp
             this.chkMatchCase.UseVisualStyleBackColor = true;
             this.chkMatchCase.CheckedChanged += new System.EventHandler(this.chkMatchCase_CheckedChanged);
 
-            // chkMatchWholeWord
             this.chkMatchWholeWord.AutoSize = true;
             this.chkMatchWholeWord.Location = new System.Drawing.Point(80, 100);
             this.chkMatchWholeWord.Name = "chkMatchWholeWord";
@@ -516,7 +468,6 @@ namespace NotepadApp
             this.chkMatchWholeWord.UseVisualStyleBackColor = true;
             this.chkMatchWholeWord.CheckedChanged += new System.EventHandler(this.chkMatchWholeWord_CheckedChanged);
 
-            // btnFindNext
             this.btnFindNext.Location = new System.Drawing.Point(350, 10);
             this.btnFindNext.Name = "btnFindNext";
             this.btnFindNext.Size = new System.Drawing.Size(100, 25);
@@ -525,7 +476,6 @@ namespace NotepadApp
             this.btnFindNext.UseVisualStyleBackColor = true;
             this.btnFindNext.Click += new System.EventHandler(this.btnFindNext_Click);
 
-            // btnReplace
             this.btnReplace.Location = new System.Drawing.Point(350, 40);
             this.btnReplace.Name = "btnReplace";
             this.btnReplace.Size = new System.Drawing.Size(100, 25);
@@ -534,7 +484,6 @@ namespace NotepadApp
             this.btnReplace.UseVisualStyleBackColor = true;
             this.btnReplace.Click += new System.EventHandler(this.btnReplace_Click);
 
-            // btnReplaceAll
             this.btnReplaceAll.Location = new System.Drawing.Point(350, 70);
             this.btnReplaceAll.Name = "btnReplaceAll";
             this.btnReplaceAll.Size = new System.Drawing.Size(100, 25);
@@ -543,7 +492,6 @@ namespace NotepadApp
             this.btnReplaceAll.UseVisualStyleBackColor = true;
             this.btnReplaceAll.Click += new System.EventHandler(this.btnReplaceAll_Click);
 
-            // btnCancel
             this.btnCancel.Location = new System.Drawing.Point(350, 100);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 25);
@@ -552,7 +500,6 @@ namespace NotepadApp
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 
-            // FindReplaceForm
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(462, 135);
@@ -576,7 +523,6 @@ namespace NotepadApp
         }
     }
 
-    // GoToLineForm Designer
     partial class GoToLineForm
     {
         private System.ComponentModel.IContainer components = null;
@@ -602,21 +548,18 @@ namespace NotepadApp
             this.btnCancel = new Button();
             this.SuspendLayout();
 
-            // lblLineNumber
             this.lblLineNumber.AutoSize = true;
             this.lblLineNumber.Location = new System.Drawing.Point(12, 15);
             this.lblLineNumber.Name = "lblLineNumber";
             this.lblLineNumber.Size = new System.Drawing.Size(100, 15);
             this.lblLineNumber.Text = "Satır numarası:";
 
-            // txtLineNumber
             this.txtLineNumber.Location = new System.Drawing.Point(12, 35);
             this.txtLineNumber.Name = "txtLineNumber";
             this.txtLineNumber.Size = new System.Drawing.Size(250, 23);
             this.txtLineNumber.TabIndex = 1;
             this.txtLineNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLineNumber_KeyDown);
 
-            // btnGoTo
             this.btnGoTo.Location = new System.Drawing.Point(280, 12);
             this.btnGoTo.Name = "btnGoTo";
             this.btnGoTo.Size = new System.Drawing.Size(75, 25);
@@ -625,7 +568,6 @@ namespace NotepadApp
             this.btnGoTo.UseVisualStyleBackColor = true;
             this.btnGoTo.Click += new System.EventHandler(this.btnGoTo_Click);
 
-            // btnCancel
             this.btnCancel.Location = new System.Drawing.Point(280, 43);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 25);
@@ -634,7 +576,6 @@ namespace NotepadApp
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 
-            // GoToLineForm
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(367, 80);
